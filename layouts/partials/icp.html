@@ -1,0 +1,8 @@
+{{ $url := (urls.Parse .Site.BaseURL) .Host }}
+{{ $host := $url.Host }}
+{{ $icps := .Site.Params.icp}}
+{{ if $icps }}
+	{{range where $icps "host" $host}}
+	<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
+	{{end}}
+	{{end}}

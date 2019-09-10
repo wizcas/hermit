@@ -1,13 +1,11 @@
-{{ $url := (urls.Parse .Permalink) .Host }}
-{{ $host := $url.Host }}
-{{ $icps := .Site.Params.icp}}
+{{ $url := urls.Parse .Site.BaseURL}}
 
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
 	<p>&copy; {{ now.Format "2006" }}
 		<a href="mailto:{{ .Site.Author.email }}">{{ .Site.Author.name }}</a>
 		<!-- {{ .Site.Params.footerCopyright | safeHTML }} -->
 		&#183;
-		<a href="{{.Site.BaseURL}}">{{$host}}</a>
+		<a href="{{.Site.BaseURL}}">{{$url.Host}}</a>
 	</p>
 	<p>
 		Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a
@@ -21,9 +19,5 @@
 				<circle cx="5" cy="19" r="1"></circle>
 			</svg></a>{{ end }}
 	</p>
-	{{ if $icps }}
-	{{range where $icps "host" $host}}
-	<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
-	{{end}}
-	{{end}}
+	<p>{{ partial "icp.html" . }}</p>
 </footer>
