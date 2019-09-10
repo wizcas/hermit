@@ -17,7 +17,9 @@
 				<circle cx="5" cy="19" r="1"></circle>
 			</svg></a>{{ end }}
 	</p>
-	{{range where $icps "host" $host}}
+	{{ if $icps }}
+		{{range where $icps "host" $host}}
 		<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
+		{{end}}
 	{{end}}
 </footer>
