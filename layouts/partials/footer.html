@@ -5,7 +5,7 @@
 		<a href="mailto:{{ .Site.Author.email }}">{{ .Site.Author.name }}</a>
 		<!-- {{ .Site.Params.footerCopyright | safeHTML }} -->
 		&#183;
-		<a href="{{.Site.BaseURL}}">{{$url.Host}}</a>
+		<a href="{{.Site.BaseURL}}">{{ partial "domain.html" . }}</a>
 	</p>
 	<p>
 		Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a

@@ -1,5 +1,4 @@
-{{ $url := (urls.Parse .Site.BaseURL) .Host }}
-{{ $host := $url.Host }}
+{{ $host := (urls.Parse (.Site.BaseURL|absURL)).Host }}
 {{ $icps := .Site.Params.icp}}
 {{ if $icps }}
 	{{range where $icps "host" $host}}
