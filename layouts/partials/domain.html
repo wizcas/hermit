@@ -1,1 +1,8 @@
-{{(urls.Parse (.Site.BaseURL | absURL)).Host}}
+<span class='domain-host'></span>
+<script>
+	var host = window.location.host;
+	const domains = document.getElementsByClassName('domain-host');
+	for(let i = 0; i < domains.length; i++){
+		domains[i].innerHTML = host;
+	}
+</script>

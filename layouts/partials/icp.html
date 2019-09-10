@@ -3,22 +3,20 @@
 
 <a href="http://www.beian.miit.gov.cn" target="_blank" id='icpid'></a>
 <script>
-	const host = window.location.host;
+	var host = window.location.host;
 	const icpid = document.getElementById('icpid');
 	const icps = {}
 	{{ if $icps }}
-	{{range $icps}}
-		icps[{{.host}}]={{.id}};
+		{{range $icps}}
+			icps[{{.host}}]={{.id}};
+		{{end}}
 	{{end}}
-	console.log(icps);
 	if(icpid){
 		if (icps[host]){
-			console.log('icpid', icps[host]);
+			console.log('ICP ID:', host, '->', icps[host]);
 			icpid.innerText = icps[host];
 		} else {
 			icpid.remove();
 		}
 	}
-
-{{end}}
 </script>
