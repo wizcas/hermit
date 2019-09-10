@@ -1,7 +1,24 @@
 {{ $host := (urls.Parse (.Site.BaseURL|absURL)).Host }}
 {{ $icps := .Site.Params.icp}}
-{{ if $icps }}
-	{{range where $icps "host" $host}}
-	<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
+
+<a href="http://www.beian.miit.gov.cn" target="_blank" id='icpid'></a>
+<script>
+	const host = window.location.host;
+	const icpid = document.getElementById('icpid');
+	const icps = {}
+	{{ if $icps }}
+	{{range $icps}}
+		icps[{{.host}}]={{.id}};
 	{{end}}
-	{{end}}
+	console.log(icps);
+	if(icpid){
+		if (icps[host]){
+			console.log('icpid', icps[host]);
+			icpid.innerText = icps[host];
+		} else {
+			icpid.remove();
+		}
+	}
+
+{{end}}
+</script>
