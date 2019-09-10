@@ -3,8 +3,12 @@
 {{ $icps := .Site.Params.icp}}
 
 <footer id="site-footer" class="section-inner thin animated fadeIn faster">
-	<p>&copy; {{ now.Format "2006" }} <a
-			href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>{{ .Site.Params.footerCopyright | safeHTML }}</p>
+	<p>&copy; {{ now.Format "2006" }}
+		<a href="mailto:{{ .Site.Author.email }}">{{ .Site.Author.name }}</a>
+		<!-- {{ .Site.Params.footerCopyright | safeHTML }} -->
+		&#183;
+		<a href="{{.Site.BaseURL}}">{{$host}}</a>
+	</p>
 	<p>
 		Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a
 			href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a>
@@ -18,8 +22,8 @@
 			</svg></a>{{ end }}
 	</p>
 	{{ if $icps }}
-		{{range where $icps "host" $host}}
-		<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
-		{{end}}
+	{{range where $icps "host" $host}}
+	<a href="http://www.beian.miit.gov.cn">{{.id}}</a>
+	{{end}}
 	{{end}}
 </footer>
